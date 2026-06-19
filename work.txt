@@ -1,0 +1,168 @@
+====================================================================================================
+SMART DATA ANALYST (ML + GENAI)
+End-to-End Automated Data Analysis Platform
+===========================================
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                         data_loader.py                                         │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Load CSV datasets uploaded by users                                                          │
+│ • Validate file format and structure                                                           │
+│ • Detect numerical and categorical features                                                    │
+│ • Identify target column candidates                                                            │
+│ • Generate dataset metadata                                                                    │
+│ • Return structured pandas DataFrame                                                           │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                        data_cleaner.py                                         │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Handle missing values                                                                        │
+│ • Remove duplicate records                                                                     │
+│ • Fix inconsistent data                                                                        │
+│ • Encode categorical variables                                                                 │
+│ • Scale numerical features                                                                     │
+│ • Prepare dataset for analysis and modeling                                                    │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                             eda.py                                             │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Generate dataset overview                                                                    │
+│ • Compute descriptive statistics                                                               │
+│ • Analyze feature distributions                                                                │
+│ • Calculate correlations                                                                       │
+│ • Detect outliers                                                                              │
+│ • Create automated exploratory insights                                                        │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                        visualizer.py                                           │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Correlation Heatmaps                                                                         │
+│ • Histograms & Distribution Plots                                                              │
+│ • Boxplots & Outlier Analysis                                                                  │
+│ • Feature Importance Charts                                                                    │
+│ • Target Variable Analysis                                                                     │
+│ • Automated Visualization Generation                                                           │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                      model_trainer.py                                          │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Automatically determine ML problem type                                                      │
+│     - Classification                                                                           │
+│     - Regression                                                                               │
+│ • Train multiple machine learning models                                                       │
+│ • Perform train-test splitting                                                                 │
+│ • Evaluate model performance                                                                   │
+│                                                                                                │
+│ Models                                                                                         │
+│ • Logistic Regression                                                                          │
+│ • Decision Tree                                                                                │
+│ • Random Forest                                                                                │
+│ • K-Nearest Neighbors                                                                          │
+│ • XGBoost                                                                                      │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                     model_selector.py                                          │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Compare model performance metrics                                                            │
+│ • Rank models based on evaluation score                                                        │
+│ • Identify best-performing model                                                               │
+│ • Store model leaderboard                                                                      │
+│ • Save best model artifact                                                                     │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                    insight_generator.py                                        │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Generate structured dataset summary                                                          │
+│ • Extract important patterns                                                                   │
+│ • Analyze model results                                                                        │
+│ • Send analytical context to LLM                                                               │
+│ • Produce business-level insights                                                              │
+│ • Generate recommendations and action items                                                    │
+│                                                                                               │
+│ Example Insight                                                                                │
+│ "Employees working overtime exhibit significantly higher attrition rates.                      │
+│ Organizations should review workload distribution to improve retention."                       │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                            utils.py                                            │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Responsibilities                                                                               │
+│ • Common helper functions                                                                      │
+│ • File operations                                                                              │
+│ • Logging system                                                                               │
+│ • Configuration management                                                                     │
+│ • Error handling                                                                               │
+│ • Reusable utility modules                                                                     │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+│
+▼
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                             app.py                                             │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Streamlit User Interface                                                                       │
+│                                                                                                │
+│ • Upload CSV Dataset                                                                           │
+│ • View Dataset Overview                                                                        │
+│ • Run Automated Data Cleaning                                                                  │
+│ • Explore Interactive Visualizations                                                           │
+│ • Train Multiple Machine Learning Models                                                       │
+│ • Compare Model Performance                                                                    │
+│ • Display Best Model                                                                           │
+│ • Generate AI-Powered Insights                                                                 │
+│ • Download Reports and Trained Models                                                          │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+====================================================================================================
+FINAL USER OUTPUT
+=================
+
+Dataset Uploaded
+↓
+Data Cleaned
+↓
+EDA Report Generated
+↓
+Visualizations Created
+↓
+Multiple Models Trained
+↓
+Best Model Selected
+↓
+AI Insights Generated
+↓
+Interactive Dashboard Displayed
+↓
+Reports & Models Available for Download
+
+====================================================================================================
+"Upload Data → Get Insights → Make Decisions"
+=============================================
