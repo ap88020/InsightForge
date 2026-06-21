@@ -55,11 +55,14 @@ class DataCleaner:
         
         return df
     
-    def scale_numerical(self, df):
+    def scale_numerical(self, df, target_column=None):
 
         num_cols = df.select_dtypes(
             include=["int64", "float64"]
-        ).columns
+        ).columns.tolist()
+
+        if target_column in num_cols:
+            num_cols.remove(target_column)
 
         df[num_cols] = self.scaler.fit_transform(
             df[num_cols]
@@ -68,11 +71,14 @@ class DataCleaner:
         return df
 
 
-    def clean_data(self,df):
-        
+    def clean_data(self, df, target_column=None):
+
         df = self.handle_missing_values(df)
         df = self.remove_duplicates(df)
         df = self.encode_categorical(df)
-        df = self.scale_numerical(df)
+        df = self.scale_numerical(
+            df,
+            target_column
+        )
 
         return df
