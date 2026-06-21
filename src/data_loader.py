@@ -45,15 +45,15 @@ class DataLoader:
     
 
 
-loader = DataLoader("employe.csv")
+# loader = DataLoader("employe.csv")
 
-df = loader.load_data() 
+# df = loader.load_data() 
 
 
-if df is not None:
-    metadata = loader.get_metadata(df)
-    missdata = loader.get_missing_values(df)
-    dupdata = loader.get_duplicate_count(df)
-    pprint(metadata)
-    print("Missing values :" , missdata)
-    print("duplicated data",dupdata)
+# if df is not None:
+#     metadata = loader.get_metadata(df)
+#     missdata = loader.get_missing_values(df)
+#     dupdata = loader.get_duplicate_count(df)
+#     pprint(metadata)
+#     print("Missing values :" , missdata)
+#     print("duplicated data",dupdata)

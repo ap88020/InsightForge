@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 class DataCleaner:
     
     def __init__(self):
-        self.label_encoder = {}
+        self.label_encoders = {}
         self.scaler = StandardScaler()
     
     def handle_missing_values(self,df):
@@ -51,20 +51,19 @@ class DataCleaner:
 
             df[col] = encoder.fit_transform(df[col])
 
-            self.label_encoder[col] = encoder
+            self.label_encoders[col] = encoder
         
         return df
     
-    def scale_numerical(self,df):
-        num_cols = df.select_dtypes(
-            include=["int64","float64"]
-        )
+    def scale_numerical(self, df):
 
-        for col in num_cols:
-            df[col] = self.scaler.fit_transform(
-                df[num_cols]
-            )
-        
+        num_cols = df.select_dtypes(
+            include=["int64", "float64"]
+        ).columns
+
+        df[num_cols] = self.scaler.fit_transform(
+            df[num_cols]
+        )
 
         return df
 
