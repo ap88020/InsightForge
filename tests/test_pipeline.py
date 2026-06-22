@@ -1,5 +1,6 @@
 import sys
 import os
+from pprint import pprint
 
 project_root = os.path.abspath(
 os.path.join(os.path.dirname(__file__), "..")
@@ -12,6 +13,7 @@ from src.data_cleaner import DataCleaner
 from src.eda import EDA
 from src.visualizer import Visualizer
 from src.model_trainer import ModelTrainer
+from src.model_selector import ModelSelector
 
 loader = DataLoader("data/employe.csv")
 
@@ -25,10 +27,6 @@ clean_df = cleaner.clean_data(
 )
 eda = EDA(clean_df)
 
-# visualizer = Visualizer(df)
-
-# visualizer.generate_visualization()
-
 trainer = ModelTrainer(
     clean_df,
     target_column="Attrition"
@@ -36,7 +34,16 @@ trainer = ModelTrainer(
 
 results = trainer.train()
 
-print(results)
+# pprint(results)
 
-# print(clean_df["Attrition"].head())
-# print(clean_df["Attrition"].unique())
+selector = ModelSelector(results)
+
+best_result = selector.select_best_model()
+
+# pprint(best_result)
+
+print("\n🏆 BEST MODEL")
+print(best_result["best_model_name"])
+
+print("\n📊 SCORE")
+print(round(best_result["best_score"], 4))
