@@ -16,33 +16,43 @@ class LLMReportGenerator:
         )
 
     def generate_report(self,dataset_summary,best_model,best_score,top_features):
-        prompt = ChatPromptTemplate.from_template(
-             """
-                    You are a Senior Data Analyst.
+        prompt = ChatPromptTemplate.from_template("""
+            You are an expert Senior Data Scientist and Business Consultant.
 
-                    Dataset Information:
-                    {dataset_summary}
+            Analyze the following machine learning results and produce a professional business report.
 
-                    Best Model:
-                    {best_model}
+            Dataset Summary:
+            {dataset_summary}
 
-                    Model Score:
-                    {best_score}
+            Best Machine Learning Model:
+            {best_model}
 
-                    Top Important Features:
-                    {top_features}
+            Model Performance:
+            {best_score}
 
-                    Generate:
+            Top Important Features:
+            {top_features}
 
-                    1. Executive Summary
-                    2. Key Insights
-                    3. Business Recommendations
-                    4. Potential Risks
-                    5. Final Conclusion
+            Requirements:
 
-                    Write professionally.
-                    """
-        )
+            1. Executive Summary
+            2. Dataset Overview
+            3. Model Performance Analysis
+            4. Feature Importance Analysis
+            5. Business Insights
+            6. Business Recommendations
+            7. Risks & Limitations
+            8. Final Conclusion
+
+            Rules:
+            - Explain the model performance in simple business language.
+            - Explain why the important features matter.
+            - Give practical recommendations.
+            - Use Markdown headings.
+            - Use bullet points where appropriate.
+            - Keep the report between 500 and 800 words.
+            - Do not simply repeat the input values.
+        """)
 
         chain = prompt | self.llm
 

@@ -13,74 +13,76 @@ class Visualizer:
         )
     
     def plot_missing_values(self):
+
         missing = self.df.isnull().sum()
 
-        plt.figure(figsize=(10,5))
+        fig, ax = plt.subplots(figsize=(10,5))
 
-        missing.plot(kind="bar")
+        missing.plot(
+            kind="bar",
+            ax=ax
+        )
 
-        plt.title("Missing_values")
+        ax.set_title("Missing Values")
 
         plt.tight_layout()
 
-        plt.savefig(
-            "reports/graphs/missing_values.png"
-        )
+        return fig
 
-        plt.close()
-    
     def plot_histograms(self):
 
         numerical_cols = self.df.select_dtypes(
             include=["int64","float64"]
         ).columns
 
+        figs = []
+
         for col in numerical_cols:
 
-            plt.figure(figsize=(6,4))
+            fig, ax = plt.subplots(figsize=(6,4))
 
             sns.histplot(
                 self.df[col],
-                kde="True"
+                kde=True,
+                ax=ax
             )
 
-            plt.title(
-                f"{col} Distrubution"
+            ax.set_title(
+                f"{col} Distribution"
             )
 
-            plt.tight_layout()
+            figs.append(fig)
 
-            plt.savefig(
-                f"reports/graphs/_hist.png"
-            )
-
-            plt.close()
+        return figs
         
+
     def plot_boxplots(self):
 
-        numerical_col = self.df.select_dtypes(
+        numerical_cols = self.df.select_dtypes(
             include=["int64","float64"]
-        )
+        ).columns
 
-        for col in numerical_col:
+        figs = []
 
-            plt.figure(figsize=(6,4))
+        for col in numerical_cols:
+
+            fig, ax = plt.subplots(figsize=(6,4))
 
             sns.boxplot(
-                x = self.df[col]
+                x=self.df[col],
+                ax=ax
             )
 
-            plt.title(f"{col} Boxplot")
-
-            plt.tight_layout()
-
-            plt.savefig(
-                f"reports/graphs/{col}_boxplot.png"
+            ax.set_title(
+                f"{col} Boxplot"
             )
 
-            plt.close()
+            figs.append(fig)
+
+        return figs
         
-    def plt_correlation_heatmap(self):
+
+    def plot_correlation_heatmap(self):
 
         numerical_df = self.df.select_dtypes(
             include=["int64","float64"]
@@ -91,28 +93,21 @@ class Visualizer:
             numerical_df.nunique() > 1
         ]
 
-        corr_matrix = numerical_df.corr()
+        corr = numerical_df.corr()
 
-        plt.figure(
-            figsize=(15,20)
-        )
+        fig, ax = plt.subplots(figsize=(12,8))
 
         sns.heatmap(
-            corr_matrix,
-            cmap="coolwarm"
+            corr,
+            cmap="coolwarm",
+            ax=ax
         )
 
-        plt.title(
+        ax.set_title(
             "Correlation Heatmap"
         )
-        
-        plt.tight_layout()
 
-        plt.savefig(
-            f"reports/graphs/correlation_heatmap.png"
-        )    
-
-        plt.close()
+        return fig
 
     def generate_visualization(self):
         

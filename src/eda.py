@@ -11,7 +11,7 @@ class EDA:
             "rows" : self.df.shape[0],
             "columns": self.df.shape[1],
             "missing_values": int(self.df.isnull().sum().sum()),
-            "duplcate_values": int(self.df.duplicated().sum())
+            "duplicate_values": int(self.df.duplicated().sum())
         }
 
         return summary
@@ -61,12 +61,12 @@ class EDA:
     def generate_report(self):
 
         report = {
-            "dataset_summary ":self.dataset_summary(),
-            "data_types ":self.data_types(),
+            "dataset_summary":self.dataset_summary(),
+            "data_types":self.data_types(),
             "unique_values":self.unique_values(),
             "numerical_summary":self.numerical_summary(),
             "categorical_summary":self.categorcal_summary(),
-            "corelation_matrix":self.correlation_analysis()
+            "correlation_matrix":self.correlation_analysis()
         }
 
         return report
